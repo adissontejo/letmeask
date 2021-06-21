@@ -1,6 +1,7 @@
 {
   "env": {
     "es2021": true,
+    "browser": true,
     "node": true
   },
   "extends": ["plugin:react/recommended", "airbnb", "prettier"],
@@ -30,7 +31,9 @@
       { "extensions": [".js", ".jsx", ".tsx"] }
     ],
     "react/react-in-jsx-scope": "off",
-    "react/button-has-type": "off"
+    "react/button-has-type": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "off"
   },
   "settings": {
     "import/resolver": {
