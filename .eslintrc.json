@@ -32,8 +32,9 @@
     ],
     "react/react-in-jsx-scope": "off",
     "react/button-has-type": "off",
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": "off"
+    "global-require": "off",
+    "@typescript-eslint/global-require": "off",
+    "react/jsx-props-no-spreading": "off"
   },
   "settings": {
     "import/resolver": {
