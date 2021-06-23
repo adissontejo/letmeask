@@ -34,13 +34,16 @@
     "react/button-has-type": "off",
     "global-require": "off",
     "@typescript-eslint/global-require": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "no-alert": "off",
+    "@typescript-eslint/no-alert": "off"
   },
   "settings": {
     "import/resolver": {
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
+      },
+      "typescript": {}
     }
   }
 }
