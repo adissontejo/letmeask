@@ -11,11 +11,11 @@
     flex-direction: column;
     justify-content: center;
     padding: 120px 80px;
-    
+
     img {
       max-width: 328px;
     }
-  
+
     strong {
       font: 700 36px 'Poppins', sans-serif;
       line-height: 42px;
@@ -69,7 +69,8 @@
         margin-top: 16px;
       }
 
-      button, input {
+      button,
+      input {
         width: 100%;
       }
     }
@@ -123,13 +124,13 @@
       background: #a8a8b3;
       margin-right: 16px;
     }
-  
+
     &::after {
       content: '';
       flex: 1;
       height: 1px;
       background: #a8a8b3;
-      margin-left: 16px;    
+      margin-left: 16px;
     }
   }
 }

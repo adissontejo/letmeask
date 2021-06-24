@@ -10,6 +10,15 @@
       justify-content: space-between;
       align-items: center;
 
+      > div {
+        display: flex;
+        gap: 8px;
+
+        button {
+          height: 40px;
+        }
+      }
+
       > img {
         max-height: 45px;
       }
@@ -60,22 +69,8 @@
         align-items: center;
         margin-top: 16px;
 
-        .user-info {
-          display: flex;
-          align-items: center;
-
-          img {
-            width: 32px;
-            height: 32px;
-            border-radius: 9999px;
-          }
-
-          span {
-            margin-left: 8px;
-            color: #29292e;
-            font-weight: 500;
-            font-size: 14px;
-          }
+        .user-info span {
+          font: 500;
         }
 
         span {
@@ -94,6 +89,10 @@
           }
         }
       }
+    }
+
+    .question-list {
+      margin-top: 32px;
     }
   }
 }

@@ -4,7 +4,12 @@
     "browser": true,
     "node": true
   },
-  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "prettier",
+    "plugin:css-modules/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -13,7 +18,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier", "html"],
+  "plugins": ["react", "@typescript-eslint", "prettier", "html", "css-modules"],
   "rules": {
     "import/extensions": [
       "error",
@@ -36,7 +41,8 @@
     "@typescript-eslint/global-require": "off",
     "react/jsx-props-no-spreading": "off",
     "no-alert": "off",
-    "@typescript-eslint/no-alert": "off"
+    "@typescript-eslint/no-alert": "off",
+    "react/require-default-props": "off"
   },
   "settings": {
     "import/resolver": {
