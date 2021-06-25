@@ -31,4 +31,4 @@ Para rodar a aplicação, siga os seguintes passos:
 
 - Rode o projeto
 
-  `$ yarn start` ou `npm start`
+  `$ yarn start` ou `$ npm start`
