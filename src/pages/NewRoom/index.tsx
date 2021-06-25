@@ -1,14 +1,15 @@
 import { FormEvent, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import Button from '~/components/Button';
-import { database } from '~/services/firebase';
-import useAuth from '~/hooks/useAuth';
-
-import illustration from '~/assets/images/illustration.svg';
-import logo from '~/assets/images/logo.svg';
+import logo from '@/logo.svg';
 
 import '~/styles/auth.scss';
+
+import { Aside, Button } from '~/components';
+import { database } from '~/services';
+import { useAuth } from '~/hooks';
+
+import './style.scss';
 
 export default function NewRoom() {
   const { user } = useAuth();
@@ -31,19 +32,12 @@ export default function NewRoom() {
       authorId: user?.id,
     });
 
-    history.push(`/admin/rooms/${firebaseRoom.key}`);
+    history.push(`/rooms/${firebaseRoom.key}`);
   };
 
   return (
     <div id="page-auth">
-      <aside>
-        <img
-          src={illustration}
-          alt="Ilustração simbolizando perguntas e respostas"
-        />
-        <strong>Crie salas de Q&amp;A ao-vivo</strong>
-        <p>Tire as dúvidas da sua audiência em tempo real</p>
-      </aside>
+      <Aside />
       <main>
         <div className="main-content">
           <img src={logo} alt="Letmeask" />

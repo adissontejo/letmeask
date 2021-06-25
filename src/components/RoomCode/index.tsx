@@ -1,6 +1,6 @@
-import copy from '~/assets/images/copy.svg';
+import copy from '@/copy.svg';
 
-import '~/styles/room-code.scss';
+import './style.scss';
 
 type Props = {
   code: string;

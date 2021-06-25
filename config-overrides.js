@@ -4,7 +4,16 @@ module.exports = override(
   addBabelPlugin([
     'babel-plugin-root-import',
     {
-      rootPathSuffix: 'src',
+      paths: [
+        {
+          rootPathSuffix: 'src/',
+          rootPathPrefix: '~/',
+        },
+        {
+          rootPathPrefix: '@/',
+          rootPathSuffix: 'src/assets/images/',
+        },
+      ],
     },
   ])
 );

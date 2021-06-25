@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
+import classnames from 'classnames';
 
-import '~/styles/question.scss';
+import './style.scss';
 
 type Props = {
   content: string;
@@ -8,11 +9,25 @@ type Props = {
     name: string;
     icon: string;
   };
+  isAnswered?: boolean;
+  isHighlighted?: boolean;
   children?: ReactNode;
 };
 
-const Question = ({ content, author, children }: Props) => (
-  <div className="question">
+const Question = ({
+  content,
+  author,
+  children,
+  isAnswered,
+  isHighlighted,
+}: Props) => (
+  <div
+    className={classnames(
+      'question',
+      { answered: isAnswered },
+      { highlighted: isHighlighted && !isAnswered }
+    )}
+  >
     <p>{content}</p>
     <footer>
       <div className="user-info">
