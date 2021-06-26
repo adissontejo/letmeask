@@ -25,7 +25,7 @@ const Question = ({
     className={classnames(
       'question',
       { answered: isAnswered },
-      { highlighted: isHighlighted && !isAnswered }
+      { highlighted: isHighlighted }
     )}
   >
     <p>{content}</p>

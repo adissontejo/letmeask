@@ -19,8 +19,14 @@
         }
       }
 
-      > img {
-        max-height: 45px;
+      .go-back {
+        background: transparent;
+        border: 0px;
+        cursor: pointer;
+
+        img {
+          max-height: 45px;
+        }
       }
     }
   }
@@ -93,6 +99,27 @@
 
     .question-list {
       margin-top: 32px;
+      margin-bottom: 10px;
+
+      .answered-question {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &::before {
+          content: 'Perguntas respondidas';
+          font: 600 18px 'Poppins', sans-serif;
+          color: #29292e;
+          margin: 35px 10px 25px;
+        }
+      }
+
+      .answered-question + .answered-question {
+        &::before {
+          content: '';
+          margin: 0;
+        }
+      }
     }
   }
 }

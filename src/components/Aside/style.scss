@@ -1,26 +1,27 @@
 .aside-component {
-  flex: 7;
+  width: 52%;
+  height: 100%;
   background: #845afd;
   color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 120px 80px;
+  padding: 10% 7%;
 
   img {
-    max-width: 328px;
+    width: 65%;
   }
 
   strong {
-    font: 700 36px 'Poppins', sans-serif;
-    line-height: 42px;
-    margin-top: 16px;
+    font: 700 3.6rem 'Poppins', sans-serif;
+    line-height: 4.2rem;
+    margin-top: 1.4%;
   }
 
   p {
-    font-size: 24px;
-    line-height: 32px;
-    margin-top: 16px;
+    font-size: 2.2rem;
+    line-height: 3.2rem;
+    margin-top: 1.4%;
     color: #f8f8f8;
   }
 }

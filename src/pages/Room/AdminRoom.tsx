@@ -9,6 +9,8 @@ import { Button, Question, RoomCode } from '~/components';
 import { useRoom } from '~/hooks';
 import { database } from '~/services';
 
+import { sortQuestions } from './utils';
+
 import './style.scss';
 
 type RouteParams = {
@@ -43,6 +45,7 @@ const AdminRoom = () => {
   const handleCheckQuestionAsAnswered = async (questionId: string) => {
     await database.ref(`rooms/${id}/questions/${questionId}`).update({
       isAnswered: true,
+      isHighlighted: false,
     });
   };
 
@@ -56,7 +59,9 @@ const AdminRoom = () => {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logo} alt="Letmeask" />
+          <button className="go-back" onClick={() => history.push('/')}>
+            <img src={logo} alt="Letmeask" />
+          </button>
           <div>
             <RoomCode code={id} />
             <Button isOutlined onClick={handleEndRoom}>
@@ -76,37 +81,39 @@ const AdminRoom = () => {
           )}
         </div>
         <div className="question-list">
-          {questions.map(item => (
-            <Question
-              key={item.id}
-              content={item.content}
-              author={item.author}
-              isAnswered={item.isAnswered}
-              isHighlighted={item.isHighlighted}
-            >
-              {!item.isAnswered && (
-                <>
-                  <button
-                    type="button"
-                    onClick={() => handleCheckQuestionAsAnswered(item.id)}
-                  >
-                    <img src={check} alt="Marcar como respondida" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleHighlightQuestion(item.id)}
-                  >
-                    <img src={answer} alt="Responder pergunta" />
-                  </button>
-                </>
-              )}
-              <button
-                type="button"
-                onClick={() => handleDeleteQuestion(item.id)}
+          {questions.sort(sortQuestions).map(item => (
+            <div className={item.isAnswered ? 'answered-question' : ''}>
+              <Question
+                key={item.id}
+                content={item.content}
+                author={item.author}
+                isAnswered={item.isAnswered}
+                isHighlighted={item.isHighlighted}
               >
-                <img src={remove} alt="Remover pergunta" />
-              </button>
-            </Question>
+                {!item.isAnswered && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => handleCheckQuestionAsAnswered(item.id)}
+                    >
+                      <img src={check} alt="Marcar como respondida" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleHighlightQuestion(item.id)}
+                    >
+                      <img src={answer} alt="Responder pergunta" />
+                    </button>
+                  </>
+                )}
+                <button
+                  type="button"
+                  onClick={() => handleDeleteQuestion(item.id)}
+                >
+                  <img src={remove} alt="Remover pergunta" />
+                </button>
+              </Question>
+            </div>
           ))}
         </div>
       </main>

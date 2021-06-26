@@ -1,21 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import { database } from '~/services';
+import QuestionType from '~/types/question';
 
 import useAuth from './useAuth';
-
-type Question = {
-  id: string;
-  author: {
-    name: string;
-    icon: string;
-  };
-  content: string;
-  isAnswered: boolean;
-  isHighlighted: boolean;
-  likeCount: number;
-  likeId: string | undefined;
-}[];
 
 type FirebaseQuestions =
   | Record<
@@ -45,7 +33,7 @@ const useRoom = (id: string) => {
 
   const [authorId, setAuthorId] = useState('');
 
-  const [questions, setQuestions] = useState<Question>([]);
+  const [questions, setQuestions] = useState<QuestionType[]>([]);
 
   useEffect(() => {
     const roomRef = database.ref(`rooms/${id}`);

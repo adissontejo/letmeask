@@ -1,11 +1,13 @@
 import { useState, FormEvent } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import logo from '@/logo.svg';
 
 import { Button, Question, RoomCode } from '~/components';
 import { useAuth, useRoom } from '~/hooks';
 import { database } from '~/services';
+
+import { sortQuestions } from './utils';
 
 import './style.scss';
 
@@ -15,6 +17,8 @@ type Params = {
 
 const UserRoom = () => {
   const { user } = useAuth();
+
+  const history = useHistory();
 
   const { id } = useParams<Params>();
 
@@ -67,7 +71,9 @@ const UserRoom = () => {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logo} alt="Letmeask" />
+          <button className="go-back" onClick={() => history.push('/')}>
+            <img src={logo} alt="Letmeask" draggable={false} />
+          </button>
           <RoomCode code={id} />
         </div>
       </header>
@@ -102,9 +108,8 @@ const UserRoom = () => {
           </div>
         </form>
         <div className="question-list">
-          {questions
-            .sort((a, b) => b.likeCount - a.likeCount)
-            .map(item => (
+          {questions.sort(sortQuestions).map(item => (
+            <div className={item.isAnswered ? 'answered-question' : ''}>
               <Question
                 key={item.id}
                 content={item.content}
@@ -138,7 +143,8 @@ const UserRoom = () => {
                   </button>
                 )}
               </Question>
-            ))}
+            </div>
+          ))}
         </div>
       </main>
     </div>
